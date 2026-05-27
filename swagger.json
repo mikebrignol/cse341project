@@ -5,12 +5,28 @@
     "description": "My REST API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341project-4acs.onrender.com",
+  "servers": [
+    {
+      "url": "https://cse341project-4acs.onrender.com"
+    }
+  ],
   "basePath": "/",
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/items/": {
       "get": {
         "description": "",
