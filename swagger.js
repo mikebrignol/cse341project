@@ -5,7 +5,13 @@ const doc = {
     title: 'CSE341 API',
     description: 'My REST API'
   },
-  host: 'localhost:3000'
+  host: 'cse341project-4acs.onrender.com',
+  servers: [
+    {
+      url: 'https://cse341project-4acs.onrender.com'
+    }
+  ],
+  schemes: ['http', 'https']
 };
 
 const outputFile = './swagger.json';
