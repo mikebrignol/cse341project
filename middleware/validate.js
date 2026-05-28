@@ -3,7 +3,9 @@ const Joi = require('joi');
 const validateItem = (req, res, next) => {
     const schema = Joi.object({
         name: Joi.string().required(),
-        price: Joi.number().required()
+        brand: Joi.string().required(),
+        price: Joi.number().required(),
+        storage: Joi.string().required()
     });
 
     const { error } = schema.validate(req.body);

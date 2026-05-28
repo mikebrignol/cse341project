@@ -1,1 +1,31 @@
-GET http://localhost:3000/items 
+GET https://cse341project-4acs.onrender.com/items
+
+GET http://localhost:3000/items
+
+### Create item
+POST http://localhost:3000/items 
+Content-Type: application/json
+
+{
+    "name": "Iphone 16 Pro",
+    "brand": "Apple",
+    "price": 1199,
+    "storage": "512GB"
+}
+
+### Update item
+PUT http://localhost:3000/items/6a13a92c279881011a8beed2
+Content-Type: application/json
+
+{
+    "name": "Galaxy s26 Ultra",
+    "brand": "Samsung",
+    "price": 1399,
+    "storage": "512GB"
+}
+
+### Delete item
+DELETE http://localhost:3000/items/6a17aa2d99b2f850d622363f HTTP/1.1
+
+
+

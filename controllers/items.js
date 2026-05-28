@@ -16,7 +16,7 @@ const getSingle = async (req, res) => {
 
   const result = await mongodb
     .getDb()
-    .collection('items')
+    .collection('smartphone')
     .find({ _id: itemId });
 
   const item = await result.toArray();
@@ -27,12 +27,14 @@ const getSingle = async (req, res) => {
 const createItem = async (req, res) => {
   const item = {
     name: req.body.name,
-    price: req.body.price
+    brand: req.body.brand,
+    price: req.body.price,
+    storage: req.body.storage
   };
 
   const response = await mongodb
     .getDb()
-    .collection('items')
+    .collection('smartphone')
     .insertOne(item);
 
   if (response.acknowledged) {
@@ -47,12 +49,14 @@ const updateItem = async (req, res) => {
 
   const item = {
     name: req.body.name,
-    price: req.body.price
+    brand: req.body.brand,
+    price: req.body.price,
+    storage: req.body.storage
   };
 
   const response = await mongodb
     .getDb()
-    .collection('items')
+    .collection('smartphone')
     .replaceOne({ _id: itemId }, item);
 
   if (response.modifiedCount > 0) {
@@ -67,7 +71,7 @@ const deleteItem = async (req, res) => {
 
   const response = await mongodb
     .getDb()
-    .collection('items')
+    .collection('smartphone')
     .deleteOne({ _id: itemId });
 
   if (response.deletedCount > 0) {
