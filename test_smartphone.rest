@@ -1,5 +1,6 @@
 GET https://cse341project-4acs.onrender.com/items
 
+### Get all items
 GET http://localhost:3000/items
 
 ### Create item
@@ -26,6 +27,9 @@ Content-Type: application/json
 
 ### Delete item
 DELETE http://localhost:3000/items/6a17aa2d99b2f850d622363f HTTP/1.1
+
+
+
 
 
 

@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/items', require('./routes/items'));
+app.use('/brands', require('./routes/brands'));
 
 const PORT = process.env.PORT || 3000;
 

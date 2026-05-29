@@ -1,0 +1,33 @@
+### get all brands
+GET http://localhost:3000/brands
+
+### create brand
+POST http://localhost:3000/brands
+Content-Type: application/json
+
+{
+    "name": "Apple",
+    "country": "USA",
+    "founded": 1976,
+    "ceo": "Tim Cook",
+    "headquarters": "Cupertino, CA",
+    "website": "https://www.apple.com",
+    "marketValue": 250000000000
+}
+
+### update brand
+PUT http://localhost:3000/brands/6a18f54dbf87b15e3c04f5a9
+Content-Type: application/json
+
+{
+    "name": "Apple",
+    "country": "USA",
+    "founded": 1976,
+    "ceo": "Tim Cook",
+    "headquarters": "Cupertino, CA",
+    "website": "https://www.apple.com",
+    "marketValue": 250000000000
+}
+
+### delete brand
+DELETE http://localhost:3000/brands/6a18f54dbf87b15e3c04f5a9

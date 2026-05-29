@@ -2,17 +2,22 @@ const mongodb = require('../data/database');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
-  const result = await mongodb.getDb().collection('smartphone').find();
+  try {
+    const result = await mongodb.getDb().collection('smartphone').find();
 
   const items = await result.toArray();
 
   res.setHeader('Content-Type', 'application/json');
 
-  res.status(200).json(items);
+    res.status(200).json(items);
+  } catch (error) {
+    res.status(500).json({ message: 'Database Error.', error: error.message });
+  }
 };
 
 const getSingle = async (req, res) => {
-  const itemId = new ObjectId(req.params.id);
+  try {
+    const itemId = new ObjectId(req.params.id);
 
   const result = await mongodb
     .getDb()
@@ -21,16 +26,20 @@ const getSingle = async (req, res) => {
 
   const item = await result.toArray();
 
-  res.status(200).json(item[0]);
+    res.status(200).json(item[0]);
+  } catch (error) {
+    res.status(500).json({ message: 'Database Error.', error: error.message });
+  }
 };
 
 const createItem = async (req, res) => {
-  const item = {
-    name: req.body.name,
-    brand: req.body.brand,
-    price: req.body.price,
-    storage: req.body.storage
-  };
+  try {
+    const item = {
+      name: req.body.name,
+      brand: req.body.brand,
+      price: req.body.price,
+      storage: req.body.storage
+    };
 
   const response = await mongodb
     .getDb()
@@ -41,11 +50,14 @@ const createItem = async (req, res) => {
     res.status(201).json(response);
   } else {
     res.status(500).json(response.error || 'Some error occurred');
+  }} catch (error) {
+    res.status(500).json({ message: 'Database Error.', error: error.message });
   }
 };
 
 const updateItem = async (req, res) => {
-  const itemId = new ObjectId(req.params.id);
+  try {
+    const itemId = new ObjectId(req.params.id);
 
   const item = {
     name: req.body.name,
@@ -63,11 +75,14 @@ const updateItem = async (req, res) => {
     res.status(204).send();
   } else {
     res.status(500).json(response.error || 'Some error occurred');
+  }} catch (error) {
+    res.status(500).json({ message: 'Database Error.', error: error.message });
   }
 };
 
 const deleteItem = async (req, res) => {
-  const itemId = new ObjectId(req.params.id);
+  try {
+    const itemId = new ObjectId(req.params.id);
 
   const response = await mongodb
     .getDb()
@@ -78,6 +93,9 @@ const deleteItem = async (req, res) => {
     res.status(200).send();
   } else {
     res.status(500).json(response.error || 'Some error occurred');
+  }}
+  catch (error) {
+    res.status(500).json({ message: 'Database Error.', error: error.message });
   }
 };
 
