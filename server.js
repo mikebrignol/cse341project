@@ -78,7 +78,7 @@ app.get('/github/callback', passport.authenticate('github', {
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Authentication routes
-app.use('/auth', require('./routes/index'));
+app.use('/', require('./routes/index'));
 
 // API routes
 app.use('/items', require('./routes/items'));
